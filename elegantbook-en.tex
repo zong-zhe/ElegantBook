@@ -3,13 +3,13 @@
 \title{An Elegant \LaTeX{} Template for Books}
 \subtitle{Classic Elegant\LaTeX{} Template}
 
-\author{Ethan Deng \& Liam Huang}
+\author{Ethan Deng, Liam Huang, syvshc, sikouhjw \& Osbert Wang}
 \institute{Elegant\LaTeX{} Program}
-\date{April 9, 2022}
-\version{4.3}
+\date{Dec. 31, 2022}
+\version{4.5}
 \bioinfo{Bio}{Information}
 
-\extrainfo{Victory won\rq t come to us unless we go to it. }
+\extrainfo{\textcolor{red}{\bfseries Caution: This template will no longer be maintained since January 1st, 2023.}}
 
 \logo{logo-blue.png}
 \cover{cover.jpg}
@@ -17,6 +17,9 @@
 % modify the color in the middle of titlepage
 \definecolor{customcolor}{RGB}{32,178,170}
 \colorlet{coverlinecolor}{customcolor}
+\usepackage{cprotect}
+
+\addbibresource[location=local]{reference.bib} % bib
 
 \begin{document}
 
@@ -49,7 +52,7 @@ For portable version, simply download lastest ElegantBook-master from GitHub or 
 \section{Update Templates}
 You can use cmd/terminal to update the tlmgr itself and all the packages, the commands are:
 \begin{lstlisting}
-tlmgr update --self 
+tlmgr update --self
 tlmgr update --all
 \end{lstlisting}
 
@@ -58,14 +61,12 @@ To learn more, please refer to \href{https://tex.stackexchange.com/questions/554
 \section{Other Release Versions}
 If you are a \TeX{} Live 2018/2019/2020/2021 user and would like to update, the official solution is to uninstall the previous version. If you want to save the bother of uninstallation and re-installation, please copy \lstinline{elegantbook.cls} to the installation directory of \TeX{} Live 2022 (default: \lstinline|C:\texlive\2022\texmf-dist\tex\latex\elegantbook| ), run \lstinline{texhash} in cmd.
 
-
-
 \chapter{ElegantBook Settings}
-
-This template is based on the Standard \LaTeX{} book class, so the options of book class work as well (Note that the option of papersize has no effect due to \lstinline{device} option). The default encoding is UTF-8 while \TeX{} Live is recommended. The test environment is Win10/Ubuntu 20.04/macOS + \TeX{} Live 2022/ Mac\TeX{} 2022, either \hologo{pdfLaTeX} or \hologo{XeLaTeX} works fine.
+This template is based on the Standard \LaTeX{} book class, so the options of book class work as well (Note that the option of papersize has no effect due to \lstinline{device} option). The default encoding is UTF-8 while \TeX{} Live is recommended. The test environments are Win10/Ubuntu 20.04/macOS + \TeX{} Live 2022/ Mac\TeX{} 2022, either \hologo{pdfLaTeX} or \hologo{XeLaTeX} works fine for \lstinline{lang=en}.
 
 \section{Languages}
 We defined one option named \lstinline{lang} which has two basic values, \lstinline{lang=en} (default) , \lstinline{lang=cn}. Different values will alter the captions of figure/table, abstract name, refname, etc. You can use this option as
+
 \begin{lstlisting}
 \documentclass[en]{elegantbook} 
 \documentclass[lang=en]{elegantbook}
@@ -78,7 +79,7 @@ Besides the two basic language translation, our user provide more options, here 
   \item French translation \lstinline{lang=fr}, provided by \href{https://github.com/abfek66}{abfek66} , please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/85}{Italian translation};
   \item Dutch Translation \lstinline{lang=nl}, provided by \href{https://github.com/inktvis75}{inktvis75} , please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/108}{Dutch Translation};
   \item Hungarian translation \lstinline{lang=hu}, provided by \href{https://github.com/palkotamas}{palkotamas}, please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/111}{Hungarian translation};
-  \item Deutsch translation \lstinline{lang=de}, provided by Lisa, please refer to\href{https://github.com/ElegantLaTeX/ElegantBook/issues/113}{Deutsch translation};
+  \item Deutsch translation \lstinline{lang=de}, provided by Lisa, please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/113}{Deutsch translation};
   \item Spanish translation \lstinline{lang=es}, provided by Gustavo A. Corradi, please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/133}{Spanish translation};
   \item Mongolian translation \lstinline{lang=mn}, provided by \href{https://github.com/Altantsooj}{Altantsooj}, please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/137}{Mongolian translation};
   \item Japanese translation \lstinline{lang=jp}, provided by \href{https://github.com/inusturbo}{inusturbo}, please refer to \href{https://github.com/ElegantLaTeX/ElegantBook/issues/172}{Japanese translation}.
@@ -96,7 +97,7 @@ The option for device (\lstinline{device}) was originally used in ElegantNote, n
 \end{lstlisting}
 
 \section{Color Themes}
-This template contains 5 color themes, i.e. \textcolor{structure1}{\lstinline{green}}\footnote{Original default theme.}, \textcolor{structure2}{\lstinline{cyan}}, \textcolor{structure3}{\lstinline{blue}}(default), \textcolor{structure4}{\lstinline{gray}}, \textcolor{structure5}{\lstinline{black}}. You can choose \lstinline{green} with
+This template contains 5 color themes, i.e., \textcolor{structure1}{\lstinline{green}}\footnote{Original default theme.}, \textcolor{structure2}{\lstinline{cyan}}, \textcolor{structure3}{\lstinline{blue}}(default), \textcolor{structure4}{\lstinline{gray}}, \textcolor{structure5}{\lstinline{black}}. You can choose \lstinline{green} with
 \begin{lstlisting}
 \documentclass[green]{elegantbook} %or
 \documentclass[color=green]{elegantbook}
@@ -210,7 +211,7 @@ In this template, we defined four different theorem class environments
 \item \textit{Theorem Environments}, including title and content, numbering corresponding to chapter. Three types depending on the format:
    \begin{itemize}
       \item \textcolor{main}{\textbf{definition}} environment, the color is  \textcolor{main}{main};
-      \item \textcolor{second}{\textbf{theorem, lemma, corollary}} environment, the color is \textcolor{second} {second};
+      \item \textcolor{second}{\textbf{theorem, lemma, corollary, axiom, postulate}} environment, the color is \textcolor{second} {second};
       \item \textcolor{third}{\textbf{proposition}} environment, the color is \textcolor{third}{third}.
    \end{itemize}
 \item \textit{Example Environment}, including \textbf{example, exercise, problem} environment, auto numbering according to chapter.
@@ -218,55 +219,96 @@ In this template, we defined four different theorem class environments
 \item \textit{Conclusion Environment}, including \textbf{conclusion, assumption, property, remark and solution}\footnote{We also define an option \lstinline{result}, which can hide the \lstinline{solution} and \lstinline{proof} environments. You can switch between \lstinline{result=answer} and \lstinline{result=noanswer}.} environments, all of which begin with boldfaced words, with format consistent with normal paragraphs.
 \end{itemize}
 
+All of theorem environments have star versions: \textcolor{main}{\textbf{definition*}}, \textcolor{second}{\textbf{theorem*}}, \textcolor{second}{\textbf{lemma*}}, \textcolor{second}{\textbf{corollary*}}, \textcolor{second}{\textbf{axiom*}}, \textcolor{second}{\textbf{postulate*}}, \textcolor{third}{\textbf{proposition*}}. Environments with an asterisk are not numbered.
+
 \subsection{Theorem Class Environments}
-Since the template uses the \lstinline{tcolorbox} package to customize the theorem class environments, it is slightly different from the normal theorem environments. The usage is as follows:
-\begin{lstlisting}
-\begin{theorem}{theorem name}{label text}
-The content of theorem.
-\end{theorem}
-\end{lstlisting}
 
-The first parameter \lstinline{<theorem name>} represents the name of the theorem, and the second parameter \lstinline{label} represents the label used in cross-reference with \verb|ref{thm:label}|. Note that cross-references must be prefixed with \lstinline{thm:}. 
+\subsubsection{\lstinline{fancy} mode}
 
-From version 4.1, you can write your theorem environments as follows:
+In \lstinline{fancy} mode, the template uses the \lstinline{tcolorbox} package to customize the theorem class environments, it is slightly different from the normal theorem environments. The usage is as follows:
 \begin{lstlisting}
-\begin{theorem}[theorem name]\label{thm:label text}
-  The content of theorem.
-\end{theorem}
-% or
-\begin{theorem}
-  The content of theorem.
-\end{theorem}
-\end{lstlisting}
+  % name + label
+  \begin{theorem}{theorem name}{label}
+    The content of a theorem with name and label. 
+    Use \ref{thm:label} to refer this theorem.
+  \end{theorem}
+  % no name + label
+  \begin{theorem}{}{label no name}
+    The content of a theorem without name.
+    Use \ref{thm:label no name} to refer this theorem.
+  \end{theorem}
+  % name + no label
+  \begin{theorem}{theorem name}{}
+    The content of a theorem without label.
+    Can't refer this theorem.
+    The last {} can be removed.
+  \end{theorem}
+  % no name + no label
+  \begin{theorem}{}{}
+    The content of a theorem without name and label.
+    Can't refer this theorem.
+    Both of {} can be removed.
+  \end{theorem}
+  \end{lstlisting}
+
+The first parameter \lstinline{theorem name} represents the name of the theorem. If the current theorem has no name, please use \lstinline|{}|\cprotect\footnote{Unless this theorem has neither no label, you should not omit this \verb|{}|.}, and the second parameter \lstinline{label} represents the label used in cross-reference with \verb|\ref{thm:label}|. Note that cross-references must be prefixed with \lstinline{thm:}. 
 
 Other theorem class environments with the same usage includes:
 
 \begin{table}[htbp]
-  \centering
-  \caption{Theorem Class Environments}
-    \begin{tabular}{llll}
-    \toprule
-    Environment & Label text & Prefix & Cross-reference \\
-    \midrule
-    definition & label & def   & \lstinline|\ref{def:label}| \\
-    theorem & label & thm   & \lstinline|\ref{thm:label}| \\
-    lemma & label & lem   & \lstinline|\ref{lem:label}| \\
-    corrlary & label & cor   & \lstinline|\ref{cor:label}| \\
-    proposition & label & pro   & \lstinline|\ref{pro:label}| \\
-    \bottomrule
-    \end{tabular}%
-  \label{tab:theorem-class}%
- \end{table}%
+\centering
+\caption{Theorem Class Environments}
+  \begin{tabular}{llll}
+  \toprule
+  Environment & Label text & Prefix & Cross-reference \\
+  \midrule
+  definition & label & def   & \lstinline|\ref{def:label}| \\
+  theorem & label & thm   & \lstinline|\ref{thm:label}| \\
+  postulate & label & pos & \lstinline|\ref{pos:label}| \\
+  axiom & label & axi & \lstinline|\ref{axi:label}|\\
+  lemma & label & lem   & \lstinline|\ref{lem:label}| \\
+  corrlary & label & cor   & \lstinline|\ref{cor:label}| \\
+  proposition & label & pro   & \lstinline|\ref{pro:label}| \\
+  \bottomrule
+  \end{tabular}%
+\label{tab:theorem-class}%
+\end{table}%
+
+From version 4.1, you can write your theorem environments as follows:
+\begin{lstlisting}
+\begin{theorem}[theorem name]\label{thm:theorem-label}
+  The content of theorem.
+\end{theorem}
+% or
+\begin{theorem}\label{thm:theorem-without-name}
+  The content of theorem.
+\end{theorem}
+\end{lstlisting}
+
+In this case, cross-reference don't have to be prefixed, i.e. the parameter of \lstinline{\ref} is the same as that of \lstinline{\label}.
  
+\subsubsection{\lstinline{simple} mode}
+
+In \lstinline{simple} mode, the template uses the \lstinline{amsthm} package to customize the theorem class environments. The usage is as follows:
+
+\begin{lstlisting}
+\begin{theorem}[theorem name]\label{thm:theorem-label}
+  The content of theorem.
+\end{theorem}
+% or 
+\begin{theorem}\label{thm:theorem-without-name}
+  The content of theorem without name.
+\end{theorem}
+\end{lstlisting}
+
 \subsection{Counter for Theorem Environments}
 
-You can use \lstinline{thmcnt} option to control the theorem counter/number display style for the theorem environments, the acceptable options are \lstinline{chapter} (default) and \lstinline{section}. 
+You can use \lstinline{thmcnt} option to control the theorem counter/number display style for the theorem environments, the acceptable options are \lstinline{chapter} (default) and \lstinline{section}:
 
 \begin{lstlisting}
 \documentclass[section]{elegantbook} % turn the Theorem 4.1 to Theorem 4.1.1 
 \documentclass[thmcnt=section]{elegantbook}
 \end{lstlisting}
-
 
 
 \subsection{Other Customized Environments}
@@ -339,13 +381,13 @@ If you use \lstinline{newtx} fonts, type in:
 
 When you are using \lstinline{newtx}, please pay attention to the hyphens. For instance,
 \begin{equation}
-\int_{R^q} f(x,y) dy.\emph{of\kern0pt f}
+\int_{R^q} f(x,y) dy.\emph{of\kern0pt f} \sin x
 \end{equation}
 
 The corresponding code is: 
 \begin{lstlisting}
 \begin{equation}
-  \int_{R^q} f(x,y) dy.\emph{of \kern0pt f}
+  \int_{R^q} f(x,y) dy.\emph{of \kern0pt f} \sin x
 \end{equation}
 \end{lstlisting}
 
@@ -374,6 +416,19 @@ The reason is that the template redefines font for math so that no new math font
 This template uses biblatex to generate the bibliography, the default citestyle and bibliography style are both \lstinline{numeric}. Let's take a glance at the citation effect. ~\cite{en1} use data from a major peer-to-peer lending \cite{en3} marketplace in China to study whether female and male investors evaluate loan performance differently \parencite{en2}. 
 
 If you want to use biblatex, you must create a file named \lstinline{reference.bib}, add bib items (from Google Scholar, Mendeley, EndNote, and etc.) to \lstinline{reference.bib} file, then cite the bibkey in the \lstinline{tex} file. The biber will automatically generate the bibliography for the reference you cited.
+
+In order to get the editors' auto-completion working, you need to add following code in your preamble:
+
+\begin{lstlisting}
+  \addbibresource[location=local]{reference.bib}
+\end{lstlisting}
+
+Then include the print commands where you want to print the bibliography:
+\begin{lstlisting}
+  \printbibliography[heading=bibintoc, title=\ebibname]
+\end{lstlisting}
+
+
 
 
 To change the bibliography style, this version introduces two options: \lstinline{citestyle} and \lstinline{bibstyle}, please refer to \href{https://ctan.org/pkg/biblatex}{CTAN:biblatex} for more detail about these options. You can change your bibliography style as
@@ -532,19 +587,27 @@ Note that a subgroup~$H$ of a group $G$ is itself a left coset of $H$ in $G$.
 \lipsum[2]
 
 \begin{theorem}[Lagrange's Theorem] \label{thm:lg}
-Let $G$ be a finite group, and let $H$ be a subgroup of $G$.  Then the order of $H$ divides the order of $G$.
+Let $G$ be a finite group, and let $H$ be a subgroup of $G$. Then the order of $H$ divides the order of $G$.
 \end{theorem}
 
-\ref{thm:lg}
+As theorem \ref{thm:lg} refered.
+
 \lipsum[3]
 
-   
+
+\begin{theorem}{theorem name}{label text}
+  The content of theorem.
+\end{theorem}
+
+we can refer this theorem as \ref{thm:label text}.
+
+
 \begin{proposition}[Size of Left Coset]
 Let $H$ be a finite subgroup of a group $G$.  Then each left coset of $H$ in $G$ has the same number of elements as $H$.
 \end{proposition}
 
 \begin{proof}
-Let $z$ be some element of $xH \cap yH$.  Then $z = xa$ for some $a \in H$, and $z = yb$ for some $b \in H$. If $h$ is any element of $H$ then $ah \in H$ and $a^{-1}h \in H$, since $H$ is a subgroup of $G$. But $zh = x(ah)$ and $xh = z(a^{-1}h)$ for all $h \in H$. Therefore $zH \subset xH$ and $xH \subset zH$, and thus $xH = zH$.  Similarly $yH = zH$, and thus $xH = yH$, as required. 
+  Let $z$ be some element of $xH \cap yH$. Then $z = xa$ for some $a \in H$, and $z = yb$ for some $b \in H$. If $h$ is any element of $H$ then $ah \in H$ and $a^{-1}h \in H$, since $H$ is a subgroup of $G$. But $zh = x(ah)$ and $xh = z(a^{-1}h)$ for all $h \in H$. Therefore $zH \subset xH$ and $xH \subset zH$, and thus $xH = zH$.  Similarly $yH = zH$, and thus $xH = yH$, as required. 
 \end{proof}
 
 \begin{figure}[htbp]
@@ -580,7 +643,7 @@ and expand the ones already used\index{keywords!used}.
     $R^2$           &      0.220        &       0.293    \\
     \bottomrule
     \multicolumn{3}{l}{\scriptsize Standard errors in parentheses} \\
-    \multicolumn{3}{l}{\scriptsize *** p<0.01, ** p<0.05, * p<0.1} \\
+    \multicolumn{3}{l}{\scriptsize *** $p < 0.01$, ** $p<0.05$, * $p<0.1$} \\
     \end{tabular}%
 \end{table}%
 
@@ -629,10 +692,32 @@ We list some FAQs for users to refer to:
 We revised our templates now and then. This section shows the version story of ElegantBook.
 
 
+\datechange{2022/12/31}{release of v4.5.}  \textcolor{red}{\bfseries Stop Maintenance}
+
+\begin{change}
+  \item Add new document option \lstinline|usesamecnt| for same thm counter for all theme environments;
+  \item Add 5-th optional parameter for \lstinline|elegantnewtheorem|.
+\end{change}
+
+
+\datechange{2022/08/15}{release of v4.4.}
+
+\begin{change}
+  \item Add custome theorem definition command \lstinline{\elegantnewtheorem};
+  \item Fix star environment(*) for inner environments (\href{https://github.com/ElegantLaTeX/ElegantBook/issues/167}{issue \#167});
+  \item Change English fonts from TeX Gyre Termes to TeX Gyre TermesX;
+  \item Re-construct some theorem environments to enchance compatibility;
+  \item Remove Gitee repo due the privacy policy;
+  \item Re-open Github pull requests.
+\end{change}
+
+
+
+
 \datechange{2022/04/09}{release of v4.3.}
 
 \begin{change}
-  \item Remove part newtx settings, set TeX Gyre Terms/Heros fonts under \hologo{XeLaTeX}.
+  \item Remove part newtx settings, set TeX Gyre Termes/Heros fonts under \hologo{XeLaTeX}.
   \item Fix Chinese fonts in the theorem environments.
   \item Add theorem counter option, \lstinline{thmcnt=section}.
   \item Add bib option \lstinline{bibend}, which can take value of biber and bibtex.
@@ -697,12 +782,12 @@ We revised our templates now and then. This section shows the version story of E
   \item Revise \lstinline{problemset}.
 \end{change}
 
+
 \nocite{en2,en3}
 
 \printbibliography[heading=bibintoc, title=\ebibname]
-
 \appendix
-% \renewcommand\chaptername{\eappendix \thechapter}
+
 
 \chapter{Mathematical Tools}
 
